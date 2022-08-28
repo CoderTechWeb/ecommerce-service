@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:postgresql://localhost:5432/ecommerce?currentSchema=customer
+    username: postgres
+    password: postgres 
+  liquibase:
+    change-log: classpath:db/db.changelog-master.xml
+
+
+server:
+  port: 8081
