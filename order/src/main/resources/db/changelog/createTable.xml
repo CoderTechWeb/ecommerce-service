@@ -12,8 +12,11 @@
 
 	<changeSet id="20220901" author="Suresh">
 		<createTable tableName="orders">
-			<column name="order_id" type="bigint">
+			<column name="id" type="bigint">
 				<constraints primaryKey="true" primaryKeyName="id_pk" />
+			</column>
+			<column name="order_id" type="varchar(250)">
+				<constraints unique="true" uniqueConstraintName="order_id_unq" />
 			</column>
 			<column name="price" type="varchar(250)" />
 			<column name="shipping_address" type="varchar(250)" />
@@ -22,7 +25,7 @@
 			
 		</createTable>
 		
-		<addAutoIncrement tableName="orders" columnName="order_id" columnDataType="bigint" startWith="1" incrementBy="1" />
+		<addAutoIncrement tableName="orders" columnName="id" columnDataType="bigint" startWith="1" incrementBy="1" />
 		<createSequence sequenceName="hibernate_sequence" incrementBy="1" startValue="1" />
 	</changeSet>
 </databaseChangeLog>
