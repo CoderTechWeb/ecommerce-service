@@ -3,7 +3,8 @@ spring:
     url: jdbc:postgresql://localhost:5432/postgres?currentSchema=product
     username: postgres
     password: postgres 
-
+  liquibase:
+    change-log: classpath:db/db.changelog-master.xml
 
 server:
   port: 8083
