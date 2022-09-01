@@ -14,10 +14,14 @@ import lombok.ToString;
 @Entity
 @Getter @Setter @ToString
 public class Orders {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	private int id;
+	
 	@Column(name = "order_id")
-	private int orderId;
+	private String orderId;
 	
 	@Column(name = "price")
 	private String price;
