@@ -1,9 +1,14 @@
 spring:
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:postgresql://localhost:5432/ecommerce?currentSchema=customer
+    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=customer
     username: postgres
     password: postgres 
+  jpa:
+    show-sql: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create
   liquibase:
     change-log: classpath:db/db.changelog-master.xml
 

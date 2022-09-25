@@ -10,22 +10,21 @@
 	<property name="now" value="current_timestamp"
 		dbms="postgresql" />
 
-	<changeSet id="20220901" author="Suresh">
-		<createTable tableName="orders">
+	<changeSet id="20220826" author="Suresh">
+		<createTable tableName="customer">
 			<column name="id" type="bigint">
-				<constraints primaryKey="true" primaryKeyName="id_pk" />
+				<constraints primaryKey="true" primaryKeyName="idcustomer_pk" />
 			</column>
-			<column name="order_id" type="varchar(250)">
-				<constraints unique="true" uniqueConstraintName="order_id_unq" />
+			<column name="name" type="varchar(250)" />
+			<column name="email" type="varchar(250)">
+				<constraints unique="true" uniqueConstraintName="email_address_unq" />
 			</column>
-			<column name="price" type="varchar(250)" />
-			<column name="shipping_address" type="varchar(250)" />
-			<column name="delivery_dt" type="timestamp" />
-			<column name="order_dt" type="timestamp" />
+			<column name="mobile_number" type="varchar(15)" />
+			<column name="create_dt" type="timestamp" />
 			
 		</createTable>
 		
-		<addAutoIncrement tableName="orders" columnName="id" columnDataType="bigint" startWith="1" incrementBy="1" />
+		<addAutoIncrement tableName="customer" columnName="id" columnDataType="bigint" startWith="1" incrementBy="1" />
 		<createSequence sequenceName="hibernate_sequence" incrementBy="1" startValue="1" />
 	</changeSet>
 </databaseChangeLog>
