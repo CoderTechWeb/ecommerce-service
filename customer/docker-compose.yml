@@ -1,0 +1,56 @@
+version: '2'
+
+services:
+  customer:
+    image: 'suresh/customer'
+    ports:
+      - "8081:8081"
+    build:
+      context: .
+    container_name: customer
+    depends_on:
+      - db
+    environment:  
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/postgres
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+
+  order:
+    image: 'suresh/order'
+    ports:
+      - "8082:8082"
+    build:
+      context: .
+    container_name: order
+    depends_on:
+      - db
+    environment:  
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/postgres
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+
+  product:
+    image: 'suresh/product'
+    ports:
+      - "8083:8083"
+    build:
+      context: .
+    container_name: product
+    depends_on:
+      - db
+    environment:  
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/postgres
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+                    
+  db:
+    image: 'postgres:13.1-alpine'
+    ports:
+      - "2022:5432"
+    container_name: db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
