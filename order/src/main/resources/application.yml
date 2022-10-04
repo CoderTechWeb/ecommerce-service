@@ -1,4 +1,6 @@
 spring:
+  application:
+    name: order
   datasource:
     url: jdbc:postgresql://localhost:5432/postgres?currentSchema=orders
     username: postgres
