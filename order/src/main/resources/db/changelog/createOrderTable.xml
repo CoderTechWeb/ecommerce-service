@@ -18,6 +18,7 @@
 			<column name="order_id" type="varchar(250)">
 				<constraints unique="true" uniqueConstraintName="order_id_unq" />
 			</column>
+			<column name="customer_id" type="bigint" />
 			<column name="price" type="varchar(250)" />
 			<column name="shipping_address" type="varchar(250)" />
 			<column name="delivery_dt" type="timestamp" />

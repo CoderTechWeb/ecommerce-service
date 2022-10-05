@@ -21,6 +21,9 @@ public class Orders {
 	@Column(name = "id")
 	private int id;
 	
+	@Column(name="customer_id")
+	private Long customerId;
+		
 	@Column(name = "order_id")
 	private String orderId;
 	

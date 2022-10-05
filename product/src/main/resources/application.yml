@@ -4,7 +4,12 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/postgres?currentSchema=product
     username: postgres
-    password: postgres 
+    password: postgres
+  jpa:
+    show-sql: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
   liquibase:
     change-log: classpath:db/db.changelog-master.xml
 

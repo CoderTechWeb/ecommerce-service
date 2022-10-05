@@ -43,4 +43,14 @@ public class ProductController {
 	public void deleteCustomer(@PathVariable Long id) {
 		productRepository.deleteById(id);
 	}
+	
+	@GetMapping("/getProductsByCustomerId/{id}")
+	public List<Product> getProductsByCustomerId(@PathVariable Long id) {
+		List<Product> products = productRepository.findByCustomerId(id);
+		if(products !=null) {
+			return products;
+		} else {
+			return null;
+		}
+	}
 }

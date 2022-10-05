@@ -24,6 +24,9 @@ public class Product {
 	@Column(name = "product_id")
 	private String productId;
 	
+	@Column(name="customer_id")
+	private Long customerId;
+	
 	@Column(name = "price")
 	private String price;
 	
