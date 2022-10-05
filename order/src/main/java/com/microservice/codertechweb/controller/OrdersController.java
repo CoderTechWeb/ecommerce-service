@@ -22,18 +22,18 @@ public class OrdersController {
 	OrdersRepository ordersRepository;
 	
 	@GetMapping("/getOrder/{id}")
-	public Orders getCustomerDetail(@PathVariable Long id) {
+	public Orders getOrderDetail(@PathVariable Long id) {
 		Optional<Orders> findById = ordersRepository.findById(id);
 		return findById.get();
 	}
 	
 	@GetMapping("/getOrders")
-	public List<Orders> getAllCustomerDetail() {
+	public List<Orders> getAllOrderDetail() {
 		return (List<Orders>) ordersRepository.findAll();
 	}
 	
 	@PostMapping("/addOrder")
-	public void addCustomer(@RequestBody Orders order) {
+	public void addOrder(@RequestBody Orders order) {
 		LocalDate now = LocalDate.now();
 		order.setOrderDt(now);
 		order.setDeliveryDt(now.plusDays(5));
@@ -41,7 +41,17 @@ public class OrdersController {
 	}
 	
 	@DeleteMapping("/deleteOrder/{id}")
-	public void deleteCustomer(@PathVariable Long id) {
+	public void deleteOrder(@PathVariable Long id) {
 		ordersRepository.deleteById(id);
+	}
+	
+	@GetMapping("/getOrdersByCustomerId/{id}")
+	public List<Orders> getOrdersByCustomerId(@PathVariable Long id) {
+		List<Orders> orders = ordersRepository.findByCustomerId(id);
+		if(orders !=null) {
+			return orders;
+		} else {
+			return null;
+		}
 	}
 }
